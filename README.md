@@ -1,5 +1,5 @@
 # Blackbox AI
-## This is a reverse engineered API wrapper for https://blackbox.ai/
+## This is a reverse engineered Node.js API wrapper for https://blackbox.ai/
 ---
 
 ```code
