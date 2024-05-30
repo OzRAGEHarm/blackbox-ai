@@ -2,7 +2,7 @@ const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 
-function chat(query, file, useCodebase) {
+function chat(query, file, useCodebase = false) {
   const url = 'https://www.blackbox.ai/api/chat';
 
   let codebaseContent = '';
@@ -16,10 +16,10 @@ function chat(query, file, useCodebase) {
     });
 
     query += `\n${codebaseContent}`;
-  } else if (file !== undefined) {
+  } else if (file) {
     const fileContent = fs.readFileSync(path.resolve(file), 'utf8');
     query += "\n```" + fileContent + "```";
-    query.replace(file, '')
+    query.replace(file, '');
   }
 
   const body = {

@@ -5,8 +5,8 @@ class api {
     this.chat = chat
   }
 
-  chat(query, file, useCodebase) {
-    return this.chat(query, file, useCodebase);
+  async chat(query, file, useCodebase = false) {
+    return await chat(query, file, useCodebase);
   }
 }
 
