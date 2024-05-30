@@ -1,12 +1,12 @@
 {
   "dependencies": {
-    "axios": "^1.7.2"
+    "axios": "^1.7.2",
+    "deasync": "^0.1.29"
   },
-  "name": "@ozrageharm/blackbox",
-  "description": "This is a reverse engineered Node.js API wrapper for https://blackbox.ai/",
+  "name": "@ozrageharm/blackbox-ai",
+  "description": "This is a reverse engineered Node.js API wrapper for [https://blackbox.ai/](https://blackbox.ai/)",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,5 +18,14 @@
     "api"
   ],
   "author": "Oz RAGE Harm",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OzRAGEHarm/blackbox-ai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OzRAGEHarm/blackbox-ai/issues"
+  },
+  "homepage": "https://github.com/OzRAGEHarm/blackbox-ai#readme"
 }

@@ -1,9 +1,4 @@
 const { chat } = require('./src/chat.js')
 
-chat("hello, how are you?")
-  .then(response => {
-    console.log(response)
-  })
-  .catch(error => {
-    console.error(error);
-  });
+const output = chat("Could you tell me what this code does:", undefined, true)
+console.log(output.data)
