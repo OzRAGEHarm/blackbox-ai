@@ -5,7 +5,7 @@
   },
   "name": "@ozrageharm/blackbox-ai",
   "description": "This is a reverse engineered Node.js API wrapper for [https://blackbox.ai/](https://blackbox.ai/)",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

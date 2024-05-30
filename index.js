@@ -1,4 +1,13 @@
 const { chat } = require('./src/chat.js')
 
-const output = chat("Could you tell me what this code does:", undefined, true)
-console.log(output.data)
+class api {
+  constructor() {
+    this.chat = chat
+  }
+
+  chat(query, file, useCodebase) {
+    return this.chat(query, file, useCodebase);
+  }
+}
+
+module.exports = new api();
