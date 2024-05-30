@@ -1,6 +1,6 @@
 # Blackbox AI
 
-**This is a reverse engineered Node.js API wrapper for [https://blackbox.ai/](https://blackbox.ai/)**
+**This is a reverse engineered Node.js API wrapper for [blackbox.ai](https://blackbox.ai/)**
 
 ## Installation
 
