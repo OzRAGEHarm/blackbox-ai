@@ -1,13 +1,7 @@
-const { chat } = require('./src/chat.js')
+const { chat } = require('./src/chat.js');
+const { models } = require('./src/models.js');
 
-class api {
-  constructor() {
-    this.chat = chat
-  }
-
-  async chat(query, file, useCodebase = false) {
-    return await chat(query, file, useCodebase);
-  }
+module.exports = {
+  chat,
+  models
 }
-
-module.exports = new api();

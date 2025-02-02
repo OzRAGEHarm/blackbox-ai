@@ -2,15 +2,28 @@ const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 
-function chat(query, file, useCodebase = false) {
-  const url = 'https://www.blackbox.ai/api/chat';
+/**
+ * Sends a chat query to the Blackbox AI API.
+ *
+ * @param {string} model - The model to use for the chat (e.g., 'deepseek-ai/DeepSeek-V3').
+ * @param {string} query - The user's query or message to send to the AI.
+ * @param {string} [file] - Optional path to a file whose content will be included in the query.
+ * @param {boolean} [useCodebase=false] - Whether to include the entire codebase in the query.
+ * @returns {Promise<string>} The response from the AI after processing the query.
+ */
+function chat(model, query, file, useCodebase = false) {
+  const url = 'https://api.blackbox.ai/api/chat';
 
   let codebaseContent = '';
 
   if (useCodebase) {
     const rootDir = process.cwd();
     walkDir(rootDir, (filePath, fileContent) => {
-      if (!filePath.includes('package.json') && !filePath.includes('package-lock.json') && !filePath.includes('node_modules') && !filePath.startsWith('.') && filePath.indexOf('/')!== 0) {
+      if (!filePath.includes('package.json') && 
+        !filePath.includes('package-lock.json') && 
+        !filePath.includes('node_modules') && 
+        !filePath.startsWith('.') && 
+        filePath.indexOf('/')!== 0) {
         codebaseContent += `\n${filePath}\n\`\`\`${fileContent}\`\`\``;
       }
     });
@@ -23,28 +36,25 @@ function chat(query, file, useCodebase = false) {
   }
 
   const body = {
-    agentMode: {},
-    clickedAnswer2: false,
-    clickedAnswer3: false,
-    codeModelMode: true,
-    githubToken: null,
-    isChromeExt: false,
-    isMicMode: false,
     messages: [
       {
         content: query,
-        role: "user",
-        data: {}
+        role: 'user',
       },
     ],
-    previewToken: true,
-    trendingAgentMode: {},
-    visitFromDelta: null
+    model: model,
+    max_tokens: '1024',
+  };
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
   };
 
   let response;
   try {
-    response = axios.post(url, body);
+    response = axios.post(url, body, config);
     response.then(res => {
       res.data = res.data.replace(/(\$\@\$.*?\$\@\$)/g, '');
     });
